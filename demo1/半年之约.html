@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>半年之约，无悔之路</title>
+		<!-- <meta http-equiv="refresh" content="0.99"> -->
+		<!-- 这里设置页面每0.99秒刷新一次，浏览器刷新需要时间缓冲 -->
+		<style type="text/css">
+			.h3 {
+				color: royalblue;
+				text-align: center;
+				display: inline;
+			}
+
+			.color-blue {
+				color: royalblue;
+			}
+
+
+			#theState {
+				display: inline-block;
+				color: dodgerblue;
+			}
+
+			.img {
+				width: 200px;
+				min-height: 280px;
+				;
+			}
+
+			.img2 {
+				width: 200px;
+				min-height: 100px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<center>
+			<h1 class="color-blue">半年之约，无悔之路</h1>
+			<h3 class="h2">距离半年之约还有：<p id="countDown" class="h3"></p>
+			</h3>
+			<h3>
+				现在的状态是：<p id="theState"></p>
+			</h3>
+
+			<p id="timeNow"></p>
+			<h3>如果半年时间一到，你未达到月薪过万，那么你就罚跑学校400米操场300圈，要一次性跑完。</h3>
+			<h3>半年之内，如果你在半年内不能让娜婷深深爱上你，那你罚跑学校400米操场500圈，要一次性跑完。</h3>
+			<h4>小样儿，敢偷懒的话跑不死你~</h4>
+			<p>如果你还想继续守护你的爱情，那从这一刻起开始努力，早上6点半起床，晚上11点睡觉。</p>
+			<p>你必须抓住每一刻的时间来学习，为此你将一心只在于让自己变得更强，强大到足以让她崇拜。</p>
+
+			<div id="bobo">
+				<h3>每天任务</h3>
+				<p>打卡早上7点</p>
+				<p>打卡晚上11点</p>
+				<p>抓住每时每刻的时间来提高自己，让自己有值得娜婷崇拜的资格，然后你才能赢得你的爱情。</p>
+				<p>ps: 你之前的努力错了方向，她想要的是一个能够并肩作战的强者，也是一个能相互依靠的人。</p>
+
+
+				<audio id="music" controls preload src="">
+				</audio><br>
+			</div>
+			<img class="img2" src="C:\Users\Administrator\Desktop\她的图片\女王大人.jpg">
+			<br><br>
+			<img class="img" src="C:\Users\Administrator\Desktop\她的图片\娜婷1.jpg">
+
+
+		</center>
+		<script type="text/javascript">
+			// var count=0;
+			// count = localStorage.getItem('COUNT');
+			// console.log(count);
+			// localStorage.setItem('COUNT',count);
+
+			var count2 = document.getElementById('countDown');
+			var nowTime = document.getElementById('timeNow');
+			var date2 = new Date("2020-01-31T23:59:59").getTime();
+			var state = 0;
+
+			// var fightingTime = theDate - dateNow;
+			//日期只能比较,不能直接求倒计时
+			//求倒计时要化成毫秒来加减,setTime()方法
+
+			function myrefresh() {
+				var date3 = new Date()
+				var date1 = date3.getTime();
+				var remainingTime = (date2 - date1).toString();
+				let day = Math.floor(remainingTime / 1000 / 60 / 60 / 24);
+				let hours = Math.floor(remainingTime / 1000 / 60 / 60 - 24 * day);
+				let miniutes = Math.floor(remainingTime / 1000 / 60 - 24 * 60 * day - 60 * hours);
+				let seconds = Math.floor(remainingTime / 1000 - 24 * 60 * 60 * day - 60 * 60 * hours - 60 * miniutes);
+				let string = day + "天" + hours + "小时" + miniutes + "分钟" + seconds + "秒";
+
+				count2.innerHTML = string;
+				nowTime.innerHTML = "现在的时间是：" + date3.getFullYear() + "年" + (date3.getMonth() + 1) +
+					"月" + date3.getDate() + "日" + date3.getHours() + "小时" +
+					date3.getMinutes() + "分" + date3.getSeconds() + "秒";
+				// console.log(count2);
+			}
+
+			var aut = document.getElementById('music');
+
+			var setMyTime = function() {
+				var nowHours = new Date().getHours();
+				var nowMiniutes = new Date().getMinutes();
+				var stateLable = document.getElementById('theState');
+
+				// nowHours=12;
+				// nowMiniutes=01;
+
+				// 
+				// nowHours=22;
+				// nowMiniutes=01;
+
+				// console.log(nowHours);
+
+				if (nowHours > 7 && nowHours < 12 || (nowHours == 12 && nowMiniutes == 00) || nowHours == 7 && nowMiniutes >= 30) {
+					stateLable.innerHTML = "上午上班中，工作时间为 7:30 到 12:00";
+					if (nowHours == 7 && nowMiniutes == 30) {
+						state = 1;
+						aut.src = "./music/上午上班中.wav";
+						aut.play();
+					}
+
+				} else if (nowHours >= 14 && nowHours < 18 || (nowHours == 18 && nowMiniutes == 00)) {
+					stateLable.innerHTML = "下午上班中，工作时间为 14:00 到 18:00";
+					if (nowHours == 14 && nowMiniutes <= 01) {
+						state = 1;
+						aut.src = "./music/下午上班中.wav";
+						aut.play();
+					}
+
+				} else if (nowHours >= 19 && nowHours < 22 || nowHours == 22 && nowMiniutes == 00) {
+					stateLable.innerHTML = "晚上上班中，工作时间为 19:00 到 22:00";
+					if (nowHours == 19 && nowMiniutes <= 01) {
+						state = 1;
+						aut.src = "./music/晚上加班中.wav"
+						aut.play();
+					}
+
+				} else {
+					stateLable.innerHTML = "下班时间到了，请注意休息";
+					if (nowHours == 22 || nowHours == 18 || nowHours == 12) {
+						state = 2;
+						// aut.src = './music/下班时间到了.wav';
+						aut.src = './music/郭琳然 - 有多爱你.mp3';
+						aut.volume = 0.5;
+						aut.play();
+					}
+
+
+				}
+			};
+
+			aut.addEventListener('ended', function() {
+				state = 0;
+			}, false);
+
+			//执行
+			myrefresh();
+			setMyTime();
+
+			var bobo = document.querySelector('#bobo');
+			bobo.addEventListener('mousemove', setBg);
+
+			function setBg(e) {
+				bobo.style.backgroundColor = `rgb(${e.offsetX},${e.offsetY},40)`;
+			}
+
+			console.log('123');
+
+			if (state == 0) {
+				window.setTimeout(function() {
+					location.reload()
+				}, 990); //1秒后执行
+			} else if (state == 1) {
+				window.setTimeout(function() {
+					location.reload()
+				}, 20000); //20秒，20s后执行刷新
+			} else if (state == 2) {
+				window.setTimeout(function() {
+					location.reload()
+				}, 300000); //300秒，5分钟后执行刷新
+			}
+
+			// setTimeout('myrefresh()', 500); //指定1秒刷新一次
+		</script>
+	</body>
+</html>

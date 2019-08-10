@@ -114,7 +114,7 @@
 					</div>
 					
 					<div class="list-group-item list-group-item-action child_problem_div">
-						<h6>Hello! Welcome to my schedule demo!
+						<h6>Hello! Welcome to see my schedule demo!
 						</h6>
 					</div>
 
@@ -203,7 +203,7 @@
 			// console.log(nowHours);
 
 			if (nowHours > 8 && nowHours < 12 || (nowHours == 12 && nowMiniutes == 00) || nowHours == 8 && nowMiniutes == 00) {
-				stateLable.innerHTML = "上午上班中，工作时间为 8:00 到 12:00";
+				stateLable.innerHTML = "上午上班：时间为 8:00 到 12:00";
 				if (nowHours == 8 && nowMiniutes == 00) {
 					state = 1;
 					aut.src = "./music/上午上班中.wav";
@@ -211,7 +211,7 @@
 				}
 
 			} else if (nowHours >= 14 && nowHours < 17 || (nowHours == 17 && nowMiniutes <= 30)) {
-				stateLable.innerHTML = "下午上班中，工作时间为 14:00 到 18:00";
+				stateLable.innerHTML = "下午上班：时间为 14:00 到 18:00";
 				if (nowHours == 14 && nowMiniutes == 10) {
 					state = 1;
 					aut.src = "./music/下午上班中.wav";
@@ -219,7 +219,7 @@
 				}
 
 			} else if (nowHours >= 19 && nowHours < 22 || nowHours == 22 && nowMiniutes == 00) {
-				stateLable.innerHTML = "晚上上班中，工作时间为 19:00 到 22:00";
+				stateLable.innerHTML = "晚上上班：时间为 19:00 到 22:00";
 				if (nowHours == 19 && nowMiniutes == 00) {
 					state = 1;
 					aut.src = "./music/晚上加班中.wav"
@@ -227,7 +227,7 @@
 				}
 
 			} else {
-				stateLable.innerHTML = "下班时间到了，尽情咸鱼吧！上班就没机会了！";
+				stateLable.innerHTML = "下班时间到了！尽情咸鱼吧，上班就没机会了！";
 				if (nowHours == 22 || (nowHours == 17 && nowMiniutes > 30) || nowHours == 18 || nowHours == 12) {
 					state = 2;
 					// aut.src = './music/下班时间到了.wav';

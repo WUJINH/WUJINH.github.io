@@ -30,13 +30,15 @@
 			.child_problem_div {
 				min-height: 55px;
 			}
-			body{
+
+			body {
 				background: #F5F6F7;
 			}
-			.nav{
+
+			.nav {
 				background: #fff;
 				border: 1px solid #aaa;
-				margin:5px;
+				margin: 5px;
 				border-radius: 6px;
 			}
 		</style>
@@ -48,7 +50,7 @@
 		<header id="header">
 
 			<nav class="navbar navbar-expand-lg navbar-light nav">
-				<a class="navbar-brand" href="#">Navbar</a>
+				<a class="navbar-brand" href="#">Schedule</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
 				 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -110,20 +112,29 @@
 						<h6>距离半年之约还有：<p id="countDown"></p>
 						</h6>
 					</div>
+					
+					<div class="list-group-item list-group-item-action child_problem_div">
+						<h6>Hello! Welcome to my schedule demo!
+						</h6>
+					</div>
 
 				</div>
 
 				<div class="list-group show_div section" id="section">
 					<div class="list-group-item list-group-item-action child_problem_div" id="bobo">
-						<h6>每天任务</h6>
+						<h6>每日任务安排</h6>
 					</div>
 
 					<div class="list-group-item list-group-item-action child_problem_div">
-						<h6>打卡早上7点</h6>
+						<h6>早上8点到12点</h6>
 					</div>
 
 					<div class="list-group-item list-group-item-action child_problem_div">
-						<h6>打卡晚上11点</h6>
+						<h6>下午2点到下午5点半</h6>
+					</div>
+
+					<div class="list-group-item list-group-item-action child_problem_div">
+						<h6>晚上7点到晚上10点</h6>
 					</div>
 
 
@@ -186,22 +197,22 @@
 			// nowHours=12;
 			// nowMiniutes=01;
 
-			// nowHours = 22;
-			// nowMiniutes = 01;
+			nowHours = 22;
+			nowMiniutes = 01;
 
 			// console.log(nowHours);
 
-			if (nowHours > 7 && nowHours < 12 || (nowHours == 12 && nowMiniutes == 00) || nowHours == 7 && nowMiniutes >= 30) {
-				stateLable.innerHTML = "上午上班中，工作时间为 7:30 到 12:00";
-				if (nowHours == 7 && nowMiniutes == 30) {
+			if (nowHours > 8 && nowHours < 12 || (nowHours == 12 && nowMiniutes == 00) || nowHours == 8 && nowMiniutes == 00) {
+				stateLable.innerHTML = "上午上班中，工作时间为 8:00 到 12:00";
+				if (nowHours == 8 && nowMiniutes == 00) {
 					state = 1;
 					aut.src = "./music/上午上班中.wav";
 					aut.play();
 				}
 
-			} else if (nowHours >= 14 && nowHours < 18 || (nowHours == 18 && nowMiniutes == 00)) {
+			} else if (nowHours >= 14 && nowHours < 17 || (nowHours == 17 && nowMiniutes <= 30)) {
 				stateLable.innerHTML = "下午上班中，工作时间为 14:00 到 18:00";
-				if (nowHours == 14 && nowMiniutes <= 01) {
+				if (nowHours == 14 && nowMiniutes == 10) {
 					state = 1;
 					aut.src = "./music/下午上班中.wav";
 					aut.play();
@@ -209,15 +220,15 @@
 
 			} else if (nowHours >= 19 && nowHours < 22 || nowHours == 22 && nowMiniutes == 00) {
 				stateLable.innerHTML = "晚上上班中，工作时间为 19:00 到 22:00";
-				if (nowHours == 19 && nowMiniutes <= 01) {
+				if (nowHours == 19 && nowMiniutes == 00) {
 					state = 1;
 					aut.src = "./music/晚上加班中.wav"
 					aut.play();
 				}
 
 			} else {
-				stateLable.innerHTML = "下班时间到了，请注意休息";
-				if (nowHours == 22 || nowHours == 18 || nowHours == 12) {
+				stateLable.innerHTML = "下班时间到了，尽情咸鱼吧！上班就没机会了！";
+				if (nowHours == 22 || (nowHours == 17 && nowMiniutes > 30) || nowHours == 18 || nowHours == 12) {
 					state = 2;
 					// aut.src = './music/下班时间到了.wav';
 					// aut.src = './music/郭琳然 - 有多爱你.mp3';

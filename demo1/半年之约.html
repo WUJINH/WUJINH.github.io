@@ -111,7 +111,6 @@
 				// nowHours=12;
 				// nowMiniutes=01;
 
-				// 
 				// nowHours=22;
 				// nowMiniutes=01;
 
@@ -146,7 +145,8 @@
 					if (nowHours == 22 || nowHours == 18 || nowHours == 12) {
 						state = 2;
 						// aut.src = './music/下班时间到了.wav';
-						aut.src = './music/郭琳然 - 有多爱你.mp3';
+						// aut.src = './music/郭琳然 - 有多爱你.mp3';
+						aut.src = './music/恋爱的味道.mp3';
 						aut.volume = 0.5;
 						aut.play();
 					}
@@ -167,10 +167,10 @@
 			bobo.addEventListener('mousemove', setBg);
 
 			function setBg(e) {
-				bobo.style.backgroundColor = `rgb(${e.offsetX},${e.offsetY},40)`;
+				// bobo.style.backgroundColor = `rgb(${e.offsetX},${e.offsetY},40)`;
 			}
 
-			console.log('123');
+			// console.log('123');
 
 			if (state == 0) {
 				window.setTimeout(function() {

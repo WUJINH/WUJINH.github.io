@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>任务系统</title>
+		<link rel="stylesheet" type="text/css" href="layui.css" />
+		<!-- 生产环境版本，优化了尺寸和速度 -->
+		<style type="text/css">
+			.header-cover {
+				display: flex;
+			}
+
+			.layui-btn,
+			.label {
+				width: 100px;
+				margin: 5px;
+			}
+
+			#section2 #first-child h2 {
+				color: #f10215;
+				font-weight: blod;
+				font-size: 20px;
+			}
+
+			#nav #title {
+				font-size: 20px;
+			}
+			..layui-colla-title{
+				overflow: hidden;
+			}
+			.layui-colla-title .span{
+				display: block;
+				float: left;
+				margin-right: 30px;
+				font-size: 16px;
+			}
+			section{
+				padding: 0 20px;
+			}
+		</style>
+	</head>
+	<body>
+
+
+		<div class="global" id="app">
+			<nav id="nav">
+				<ul class="layui-nav layui-bg-green" lay-filter="">
+					<li class="layui-nav-item">
+						<a id="title">日常控制系统</a><span class="layui-badge-dot"></span>
+					</li>
+					<li class="layui-nav-item">
+						<a id="title">自主任务发布系统</a>
+					</li>
+				</ul>
+			</nav>
+			<br>
+			<header class="header-cover" id="header">
+
+				<section>
+					<div class="layui-btn-group header-wrap">
+						<button class="layui-btn layui-btn-primary" >选择类型</button>
+						<button class="layui-btn" @click="changeIndex(0)">常规任务</button>
+						<button class="layui-btn" @click="changeIndex(1)">做个项目</button>
+						<button class="layui-btn" @click="changeIndex(2)">打把游戏</button>
+						<button class="layui-btn" @click="changeIndex(3)">小睡一下</button>
+						<button class="layui-btn" @click="changeIndex(4)">晚上睡觉了</button>
+						<button class="layui-btn" @click="changeIndex(5)">学个习</button>
+						<button class="layui-btn" @click="changeIndex(6)">追个剧</button>
+						<button class="layui-btn" @click="changeIndex(7)">复个习</button>
+						<button class="layui-btn" @click="changeIndex(8)">跑个步</button>
+						<button class="layui-btn" @click="changeIndex(9)">吃个饭</button>
+						<button class="layui-btn layui-btn-warm" @click="misstionStart()">开始</button>
+					</div>
+
+				</section>
+			</header>
+			<hr>
+			<article class="article">
+				<section id="section1">
+					<div class="layui-btn-group choose-wrap">
+						<button class="layui-btn layui-btn-primary" >选择时间</button>
+						<button class="layui-btn" @click="setMinutes(10)">10分钟</button>
+						<button class="layui-btn" @click="setMinutes(20)">20分钟</button>
+						<button class="layui-btn" @click="setMinutes(30)">30分钟</button>
+						<button class="layui-btn" @click="setMinutes(60)">1小时</button>
+						<button class="layui-btn" @click="setHours(2)">2小时</button>
+						<button class="layui-btn" @click="setHours(3)">3小时</button>
+						<button class="layui-btn" @click="setHours(4)">4小时</button>
+						<button class="layui-btn" @click="setHours(6)">6小时</button>
+						<button class="layui-btn" @click="setHours(8)">8小时</button>
+						<button class="layui-btn" @click="setDays(1)">一天</button>
+						<button class="layui-btn" @click="setDays(2)">两天</button>
+						<button class="layui-btn" @click="setDays(3)">三天</button>
+						<button class="layui-btn" @click="clearData()">清空时间</button>
+					</div>
+				</section>
+				<hr>
+
+				<section class="layui-collapse" id="section2">
+					<div class="layui-colla-item" id="first-child">
+						<h2 class="layui-colla-title">{{missionName}} &nbsp;||&nbsp; <span id="remainTime"></span>
+						</h2>
+						<div class="layui-colla-content layui-show"></div>
+					</div>
+
+					<div class="layui-colla-item">
+						<h2 class="layui-colla-title">
+							<span class="span"> {{tell[1]}}{{choose[index]}} </span>
+							<span class="span"> {{tell[2]}}{{hours}}时 {{minutes}}分 {{days}}天 </span>
+
+						</h2>
+						<div class="layui-colla-content layui-show"> </div>
+					</div>
+					<div class="layui-colla-item">
+						<h2 class="layui-colla-title" id="nowTimeLabel"></h2>
+						<div class="layui-colla-content layui-show"></div>
+					</div>
+				</section>
+			</article>
+			<footer>
+				<section>
+					<audio id="music" controls preload src="">
+					</audio><br>
+				</section>			
+			</footer>
+		</div>
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+	<script type="text/javascript">
+		var state = 0;
+
+
+
+
+		// count = localStorage.getItem('COUNT');
+		// console.log(count);
+		// localStorage.setItem('COUNT',count);
+
+
+		var vue = new Vue({
+			el: '#app',
+			data: {
+				choose: ['常规任务', '做个项目', '打把游戏', '小睡一下', '晚上睡觉了', '学个习', '追个剧','复个习','跑个步','吃个饭'],
+				index: 0,
+				tell: ['正在进行: ', '任务设置: ', '时间设置：'],
+				days: 0,
+				hours: 0,
+				minutes: 0,
+				seconds: 0,
+				differenceSeconds: 0,
+				theDay: 0,
+				theHours: 0,
+				theMinutes: 0,
+				totalSeconds: 0,
+				nowTime: 0,
+				missionName: "",
+			},
+			methods: {
+				misstionStart: function() {
+					this.computedTime();
+					let t = this.choose[this.index];
+					location.reload()
+				},
+				changeIndex(num) {
+					this.index = num;
+				},
+				computedTime() {
+					let date = new Date();
+					let time1 = this.minutes * 60 + this.hours * 60 * 60 + this.days * 60 * 60 * 24;
+					localStorage.setItem('lastTime', time1);
+					//这里是简单的计算函数
+					localStorage.setItem('mission', this.choose[this.index]);
+
+				},
+				clearData() {
+					clear();
+				},
+				setMinutes(minute) {
+					this.minutes = minute;
+					this.hours = 0;
+					this.days = 0;
+					localStorage.setItem('n-minutes', this.minutes);
+					localStorage.setItem('n-hours', this.hours);
+					localStorage.setItem('n-days', this.days);
+				},
+				setHours(hour) {
+					this.minutes = 0;
+					this.hours = hour;
+					this.days = 0;
+					localStorage.setItem('n-minutes', this.minutes);
+					localStorage.setItem('n-hours', this.hours);
+					localStorage.setItem('n-days', this.days);
+				},
+				setDays(day) {
+					this.minutes = 0;
+					this.hours = 0;
+					this.days = day;
+					localStorage.setItem('n-minutes', this.minutes);
+					localStorage.setItem('n-hours', this.hours);
+					localStorage.setItem('n-days', this.days);
+				},
+				setLocalStorageData() {
+					var mission = localStorage.getItem('mission');
+					var nhh = localStorage.getItem('n-hours');
+					var nmm = localStorage.getItem('n-minutes');
+					var ndd = localStorage.getItem('n-days');
+
+					// console.log(typeof(hh))	
+					// // localStorage存储的是字符串或null, null是object类型
+
+					nhh = Number(nhh)
+					nmm = Number(nmm)
+					ndd = Number(ndd)
+					this.missionName = mission;
+					this.days = ndd;
+					this.hours = nhh;
+					this.minutes = nmm;
+				},
+
+			}
+		});
+
+
+		var setNowTime = function() {
+			let nowTimeLabel = document.getElementById('nowTimeLabel');
+			let date = new Date();
+			nowTimeLabel.innerHTML = "现在的时间：" + date.getFullYear() + "年" + (date.getMonth() + 1) +
+				"月" + date.getDate() + "日" + date.getHours() + "小时" +
+				date.getMinutes() + "分" + date.getSeconds() + "秒";
+		}
+
+
+		// 控制播放结束恢复状态的
+		// var aut = document.getElementById('music');
+
+		var clear = function() {
+			localStorage.setItem("mission", '请选择任务');
+			localStorage.setItem("n-hours", 0);
+			localStorage.setItem("n-minutes", 0);
+			localStorage.setItem("n-days", 0);
+			localStorage.setItem('lastTime', 0);
+		}
+
+		var countDown2 = function() {
+			let remainTimeLabel = document.getElementById('remainTime'); //获取剩余时间的标签
+			let remainingTime = localStorage.getItem('lastTime');
+			remainingTime = Number(remainingTime);
+
+			if (remainingTime > 0) {
+				let hours = Math.floor(remainingTime / 60 / 60);
+				let minutes = Math.floor(remainingTime / 60 - hours * 60);
+				let seconds = Math.floor(remainingTime - minutes * 60 - hours * 60 * 60);
+				remainTimeLabel.innerHTML = '剩余时间：' + minutes + "分 " + seconds + '秒 ' + hours + "时 ";
+				remainingTime -= 1;
+				localStorage.setItem('lastTime', remainingTime);
+
+			} else {
+				state = 1;
+				openMusic(remainingTime);
+			}
+			// console.log('hello')
+
+		}
+		var openMusic = function(remainingTime) {
+			let aut = document.getElementById('music');
+			let remainTimeLabel = document.getElementById('remainTime'); //获取剩余时间的标签
+
+			if (remainingTime == 0) {
+				clearInterval(interval); //清除定时器
+				remainTimeLabel.innerHTML = "任务时间结束, 请准备下个任务！";
+				state = 2;
+				aut.src = "./music//恋爱的味道.mp3";
+				aut.volume = 0.2;
+				aut.play();
+			}
+			aut.addEventListener('ended', function() {
+				localStorage.setItem('lastTime', -1);
+				console.log('close');	
+			}, false);
+		}
+		
+		
+
+		var interval = window.setInterval(function() {
+			setNowTime();
+			vue.setLocalStorageData();
+			countDown2();
+			// location.reload()				
+		}, 1000); //0.99秒后执行
+	</script>
+</html>

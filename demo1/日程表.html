@@ -228,12 +228,12 @@
 
 			} else {
 				stateLable.innerHTML = "下班时间到了！尽情咸鱼吧，上班就没机会了！";
-				if (nowHours == 22 || (nowHours == 17 && nowMiniutes > 30) || nowHours == 18 || nowHours == 12) {
+				if (nowHours == 22&&nowMiniutes<=10 || (nowHours == 17 && 30<nowMiniutes<=40 ) || nowHours == 18 &&nowMiniutes<=10|| nowHours == 12&&nowMiniutes<=10) {
 					state = 2;
 					// aut.src = './music/下班时间到了.wav';
 					// aut.src = './music/郭琳然 - 有多爱你.mp3';
 					aut.src = './music/恋爱的味道.mp3';
-					aut.volume = 0.5;
+					aut.volume = 0.3;
 					aut.play();
 				}
 

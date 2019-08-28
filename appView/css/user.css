@@ -1,0 +1,127 @@
+.tabBar {
+	position: fixed;
+	bottom: 0;
+}
+
+.tabBar .tab_icon_wrap {
+	width: 20vw;
+	height: 20vw;
+}
+
+.navBar {
+	position: absolute;
+	top: 13vw;
+	width: 100vw;
+	height: 13vw;
+
+}
+
+.navBar span {
+	display: inline-block;
+	width: 7vw;
+	height: 7vw;
+	/* border: 1px solid skyblue; */
+	/* border-radius: 50%; */
+	font-size: 18px;
+	line-height: 7vw;
+	/* background: #f10215; */
+
+}
+
+.navBar_content {
+	position: absolute;
+	width: 100vw;
+	top: 27vw;
+	height: 100vh;
+}
+.navBar_content .item1 .title{
+	width: 100vw;
+	text-align: center;
+}
+.info_wrap_item{
+		width:100vw;
+		height: 5vh;
+		padding: 1vh 0;
+		line-height: 5vh;
+		border-bottom: 1px solid #ddd;
+}
+.info_wrap_item .left_title{
+	float: left;
+	margin-left: 8vw;
+}
+.info_wrap_item .money{
+	float: right;
+	margin-right:5vw;
+
+}
+
+.navBar_content .item1 .money span{
+	display: inline-block;
+	margin: 0 auto;
+	font-size: 25px;
+	font-weight: 580px;
+	color:rgba(33, 62, 118, 0.8);
+	border-bottom: 1px solid rgba(33, 62, 118, 1);
+}
+
+.form_wrap{
+	margin-top:5vh;
+	width:100vw;
+	text-align: center;
+}
+.form_wrap .title{
+	margin-bottom: 4vh;
+}
+
+.form_wrap .title span{
+	font-size: 21px;
+	font-weight: 600px;
+	color:rgba(33, 62, 118, 0.8);
+}
+.form_wrap .input_item{
+	margin-top: 1.5vh;
+}
+.form_wrap .input_item .labe_wrap{
+	width:100vw;
+	font-size: 13.5px;
+	font-weight: 550;
+	color:rgba(33, 62, 118, 1);
+	text-align: left;
+	margin-bottom: 2vh;
+	padding-left: 5vw;;
+	/* background: blue; */
+}
+.form_wrap .input_item .input_text{
+	width:90vw;
+	height: 3vh;
+	border:none;
+	border-bottom: 1px solid #ddd;
+}
+.form_wrap .register_btn_wrap{
+	margin-top: 5vh;
+}
+.form_wrap .register_btn_wrap .login_wrap{
+	margin-bottom: 3vh;
+	text-align: left;
+	padding-left: 4vw;
+	font-size: 12px;
+	color: rgba(0, 160, 182, 0.9);
+	font-weight: 550;
+}
+.form_wrap .register_btn_wrap .login_wrap a{
+	display: inline-block;
+	margin-left: 1vw;
+	color: rgba(0, 160, 182, 0.9);
+}
+.form_wrap .register_btn_wrap .btn_register{
+	width:92vw;
+	height: 5.5vh;
+	margin:0 auto;
+	font-size:13.5px;
+	border-radius: 2px;
+	background-color:rgba(0, 160, 182, 0.9);
+	color:white;
+}
+.form_wrap .register_btn_wrap .btn_register:active{
+	opacity: 0.35;
+}

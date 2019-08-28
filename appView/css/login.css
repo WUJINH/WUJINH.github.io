@@ -1,0 +1,30 @@
+/* login.css */
+
+.form_wrap .forget_password{
+	margin-top:4vh;
+	margin-bottom: 4vh;
+}
+.form_wrap .forget_password .fotget_btn_wrap{
+	text-align: right;
+	padding-right: 4vw;
+	font-size: 13.5px;	
+}
+.form_wrap .forget_password .fotget_btn_wrap a{
+	color:rgba(0, 160, 182, 0.9);
+}
+.form_wrap .login_wrap .btn_register{
+	width:92vw;
+	height: 5.5vh;
+	margin:0 auto;
+	font-size:13.5px;
+	border-radius: 2px;
+	background-color:rgba(0, 160, 182, 0.9);
+	color:white;
+}
+.form_wrap .login_wrap .register_link{
+	margin-top:2vh ;
+}
+.form_wrap .login_wrap .register_link a{
+	color:rgba(0, 160, 182, 0.9);
+	font-size: 14px;
+}

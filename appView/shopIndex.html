@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+
+		<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+		<link href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+		<!-- 自动刷新头 -->
+		<!-- <meta http-equiv="refresh" content="2"> -->
+		<!-- 先引入 Vue -->
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/mint-ui/lib/index.js"></script>
+		<link rel="stylesheet" href="css/shopIndex.css">
+		<link rel="stylesheet" href="css/global.css">
+	</head>
+	<body>
+		
+		<div id="app">
+			<header class="header">
+				<nav>
+					<div class="wrap menu_wrap" @click="openMenu">
+						<i class='fa fa-align-justify'></i>
+					</div>
+					<div class="wrap icon_wrap">
+						<div class="img_wrap">
+							<img src="img/logo.png" alt="">
+						</div>
+					</div>
+					<div class="wrap check_wrap">
+
+						<select name="ch">
+							<option value="">ZH</option>
+							<option value="">EN</option>
+						</select>
+
+					</div>
+				</nav>
+				<div class="munu_cover" v-show="isMenu">
+					<div><a href="login.html">login</a></div>
+					<div><a href="register.html">register</a></div>
+					<div><a href="user.html">user</a></div>
+					<div><a href="shopIndex.html">shopIndex</a></div>
+				</div>
+			</header>
+			
+			
+			<div class="info_wrap">
+				<div class="title_wrap wrap">
+					<i class="fa fa-sellsy"></i>
+					<span>投资组合</span>
+				</div>
+				<div class="img_wrap wrap">
+					<div class="btn_left" @click="">
+						<i class="fa fa-angle-left"></i>
+					</div>
+					<div class="img">
+						<img src="img/user_img.jpg" alt="">
+					</div>
+					<div class="btn_right" @click="">
+						<i class="fa fa-angle-right"></i>
+					</div>
+				</div>
+				<div class="info_text wrap">
+					<div class="s1">0 TXT</div>
+					<div class="s2">
+						<select name="chose">
+							<option value="">0.00 CNY</option>
+							<option value="">0.00 CNY</option>
+						</select>
+						
+					</div>
+				</div>
+			</div>
+			
+			<div class="btn_wrap">
+				<mt-button size="large" class="btn1 btn">
+					<span class="s1">购买</span>
+					<span class="s2">TRAXALT</span>
+				</mt-button>
+				<mt-button size="large" class="btn2 btn">
+					发送
+				</mt-button>
+				<mt-button size="large" class="btn2 btn">
+					收到
+				</mt-button>
+				<div size="large" class="btn3">
+					<div type="button" @click="" class="btn">交易记录</div>
+				</div>
+			</div>
+
+		</div>
+
+	</body>
+
+
+
+	<script>
+		new Vue({
+			el: '#app',
+			data() {
+				return {
+					isMenu: false,
+				}
+			},
+			methods: {
+				handleClick: function() {
+					this.$toast('Hello world!')
+				},
+				openMenu() {
+					this.isMenu = !this.isMenu;
+				}
+			}
+		})
+	</script>
+</html>

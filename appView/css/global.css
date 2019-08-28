@@ -1,0 +1,16 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+}
+
+button:active,.btn:active{
+	opacity: 0.6;
+}
+
+img{
+	width:100%;
+}

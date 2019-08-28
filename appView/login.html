@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+
+		<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+		<link href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+		<!-- 自动刷新头 -->
+		<!-- <meta http-equiv="refresh" content="2"> -->
+		<!-- 先引入 Vue -->
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/mint-ui/lib/index.js"></script>
+		<link rel="stylesheet" href="css/shopIndex.css">
+		<link rel="stylesheet" href="css/global.css">
+		<link rel="stylesheet" type="text/css" href="css/register.css" />
+		<link rel="stylesheet" href="css/login.css">
+	</head>
+	<body>
+
+		<div id="app">
+			
+			
+			<header class="header">
+				<nav>
+					<div class="wrap menu_wrap" @click="openMenu">
+						<i class='fa fa-align-justify'></i>
+					</div>
+					<div class="wrap icon_wrap">
+						<div class="img_wrap">
+							<img src="img/logo.png" alt="">
+						</div>
+					</div>
+					<div class="wrap check_wrap">
+
+						<select name="ch">
+							<option value="">ZH</option>
+							<option value="">EN</option>
+						</select>
+
+					</div>
+				</nav>
+				<div class="munu_cover" v-show="isMenu">
+					<div><a href="login.html">login</a></div>
+					<div><a href="register.html">register</a></div>
+					<div><a href="user.html">user</a></div>
+					<div><a href="shopIndex.html">shopIndex</a></div>
+				</div>
+			</header>
+			
+			<div class="form_wrap">
+				<div class="title">
+					<span>登录</span>
+				</div>
+				
+				<div class="input_item">
+					<div class="labe_wrap">
+						<div class="input_label">电子邮件</div>
+					</div>					
+					<input type="text" class="input_text">
+				</div>
+				<div class="input_item">
+					<div class="labe_wrap">
+						<div class="input_label">密码</div>
+					</div>					
+					<input type="text" class="input_text">
+				</div>
+				
+				<div class="forget_password">
+					<div class="fotget_btn_wrap">
+						<a href="" class="btn_login">忘记密码</a>
+					</div>
+				</div>
+				<div class="login_wrap">
+					<mt-button size="large" class="btn_register">
+						登录	
+					</mt-button>
+					<div class="register_link">
+						<a href="register.html">我还没有账户</a>
+					</div>
+				</div>
+				
+				
+			</div>
+			
+			
+			
+
+		</div>
+
+	</body>
+
+
+
+	<script>
+		new Vue({
+			el: '#app',
+			data() {
+				return {
+					isMenu: false,
+				}
+			},
+			methods: {
+				handleClick: function() {
+					this.$toast('Hello world!')
+				},
+				openMenu() {
+					this.isMenu = !this.isMenu;
+				}
+			}
+		})
+	</script>
+</html>

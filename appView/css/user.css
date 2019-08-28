@@ -8,13 +8,6 @@
 	height: 20vw;
 }
 
-.navBar {
-	position: absolute;
-	top: 13vw;
-	width: 100vw;
-	height: 13vw;
-
-}
 
 .navBar span {
 	display: inline-block;
@@ -24,15 +17,17 @@
 	/* border-radius: 50%; */
 	font-size: 18px;
 	line-height: 7vw;
-	/* background: #f10215; */
+	background: #f10215;
 
 }
 
 .navBar_content {
 	position: absolute;
 	width: 100vw;
-	top: 27vw;
-	height: 100vh;
+	top: 11vw;
+}
+.navBar_content .user_info_content2{
+	min-height: 120vh;
 }
 .navBar_content .item1 .title{
 	width: 100vw;
@@ -65,7 +60,7 @@
 }
 
 .form_wrap{
-	margin-top:5vh;
+	margin-top:4.5vh;
 	width:100vw;
 	text-align: center;
 }
